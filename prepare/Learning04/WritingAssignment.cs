@@ -9,7 +9,7 @@ public class WritingAssignment : Assignment
 
     public string GetWritingInformation()
     {
-        string title = _title;
-        return title;
+        string studentName = GetSudentName();
+        return _title + " by " + studentName;
     }
 }

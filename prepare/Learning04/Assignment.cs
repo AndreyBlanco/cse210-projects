@@ -11,8 +11,16 @@ public class Assignment
 
     public string GetSummary()
     {
-        string student = _studentName;
-        string topic = _topic;
-        return student + " - " + topic;
+        return _studentName + " - " + _topic;
+    }
+
+    public string GetSudentName()
+    {
+        return _studentName;
+    }
+
+    public string GetTopic()
+    {
+        return _topic;
     }
 }
