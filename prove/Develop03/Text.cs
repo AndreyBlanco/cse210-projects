@@ -3,11 +3,22 @@ using System.IO;
 
 public class Text
 {
-    private string textName = "lds-scriptures.txt";
+    private string _textName = "";
+
+    public Text()
+    {
+        _textName = "lds-scriptures.txt";
+    }
     
+    public Text(string namefile)
+    {
+        _textName = namefile;
+
+    }
+
     public string LoadScripture(string book, string chapter, string verse)
     {
-        string[] lines = System.IO.File.ReadAllLines(textName);
+        string[] lines = System.IO.File.ReadAllLines(_textName);
         string text = "";
         
         foreach (string line in lines)

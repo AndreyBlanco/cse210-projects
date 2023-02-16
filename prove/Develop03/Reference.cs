@@ -3,18 +3,18 @@ using System.IO;
 
 public class Reference
 {
-    private string book = "";
-    private string chapter = "";
-    private string verse = "";
-    private string scripture = "";
-    private List<string> reference = new List<string>();
-    private Text text = new Text();
+    private string _book = "";
+    private string _chapter = "";
+    private string _verse = "";
+    private string _scripture = "";
+    private List<string> _reference = new List<string>();
+    private Text _text = new Text();
 
     public Reference()
     {
         
         string[] bookList = System.IO.File.ReadAllLines("books.txt");
-        while (scripture == "")
+        while (_scripture == "")
         {
             
             Console.Write("BOOK LIST: | ");
@@ -25,35 +25,47 @@ public class Reference
             Console.WriteLine("");
             Console.WriteLine("");
             Console.Write("Please enter the book: ");
-            book = Console.ReadLine();
+            _book = Console.ReadLine();
             Console.Write("Please enter the chapter: ");
-            chapter = Console.ReadLine();
+            _chapter = Console.ReadLine();
             Console.Write("Please enter the verse: ");
-            verse = Console.ReadLine();
-            scripture = text.LoadScripture(book, chapter, verse);
+            _verse = Console.ReadLine();
+            _scripture = _text.LoadScripture(_book, _chapter, _verse);
 
-            if (scripture == "")
+            if (_scripture == "")
             {
                 Console.WriteLine("This reference doesn't exist, please check and try again");
             }
         }
-        reference.Add(book);
-        reference.Add(chapter);
-        reference.Add(verse);
+        _reference.Add(_book);
+        _reference.Add(_chapter);
+        _reference.Add(_verse);
+    }
+
+    public Reference(string book, string chapter, string verse, string scripture)
+    {
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
+        _scripture = scripture;
+
+        _reference.Add(_book);
+        _reference.Add(_chapter);
+        _reference.Add(_verse);
     }
     
     public List<string> SendReference()
     {
         List<string> sendReference = new List<string>();
 
-        sendReference = reference;     
+        sendReference = _reference;     
         
         return sendReference;
     }
 
     public string SendText()
     {
-        string text = scripture;
+        string text = _scripture;
 
         return text;
     }
