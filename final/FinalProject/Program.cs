@@ -12,7 +12,6 @@ class Program
         
         while (endProgram != "9")
         {
-            Console.Clear();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Create New Task Manager");
             Console.WriteLine("  2. Load Task Manager");
@@ -25,10 +24,30 @@ class Program
             Console.WriteLine("  9. Quit");
             Console.Write("Select a choice from the menu: ");
             endProgram = Console.ReadLine();
+            Console.Clear();
 
             if (endProgram == "1")
             {
                 Console.WriteLine("Create New Task Manager");
+                Console.Write("Please type User Name: ");
+                string userName = Console.ReadLine();
+                string verif = "Y";
+                int userAge = 0;
+                while (verif == "Y")
+                {
+                    Console.Write("Please type User Age: ");
+                    try
+                    {
+                        userAge = int.Parse(Console.ReadLine());
+                        verif = "N";
+                    }
+                    catch (System.FormatException)
+                    {
+                        Console.WriteLine("Type a number!");
+                        verif = "Y";
+                    }
+                }  
+                Console.WriteLine($"{userName}, {userAge}.");      
             }
             else if (endProgram == "2")
             {

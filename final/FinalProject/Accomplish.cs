@@ -8,7 +8,7 @@ public class Accomplish
         _date = date;
     }
 
-    public GetResult(string date)
+    public void GetResult(string date)
     {
         _result = "Complete";
     }

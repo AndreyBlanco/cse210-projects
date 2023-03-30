@@ -1,10 +1,11 @@
-public class WeeklyPeriod : Periods
+public class DailyPeriod : Periods
 {
-    private List<strings> _sesions;
+    private List<string> _sesions;
     
-    public WeeklyPeriod(string startDate, string endDate, int sesionTimes) : base(startDate, endDate, sesionTimes)
+    public DailyPeriod(string startDate, string endDate, int sesionTimes) : base(startDate, endDate, sesionTimes)
     {   
         
+        string newDate = "0";
         for (int i = 0; i < sesionTimes; i++)
         {
             _sesions.Add(newDate);

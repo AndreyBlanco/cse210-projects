@@ -4,7 +4,7 @@ public class Periods
     private string _endDate;
     private int _sesionTimes;
 
-    public Periods(string startDate, string endDate, string sesionTimes)
+    public Periods(string startDate, string endDate, int sesionTimes)
     {
         _startDate = startDate;
         _endDate = endDate;
