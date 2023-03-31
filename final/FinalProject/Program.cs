@@ -9,6 +9,7 @@ class Program
         Console.WriteLine();
 
         string endProgram = "continue";
+        Child child = new Child(); 
         
         while (endProgram != "9")
         {
@@ -47,7 +48,9 @@ class Program
                         verif = "Y";
                     }
                 }  
-                Console.WriteLine($"{userName}, {userAge}.");      
+                child.SetName(userName);
+                child.SetAge(userAge);
+                child.DisplayReport();                    
             }
             else if (endProgram == "2")
             {
@@ -59,7 +62,54 @@ class Program
             }
             else if (endProgram == "4")
             {
-                Console.WriteLine("Add New Task");
+                if (child.GetName() == "")
+                {
+                    Console.Clear();
+                    Console.WriteLine("You have to create a Task Manger first:");                    
+                }
+                else
+                {    
+                    string type = "continue";                
+                    while (type != "1" && type != "2" && type != "3" && type != "4" && type != "5")
+                    {
+                        Console.WriteLine("The type of Tasks are:");
+                        Console.WriteLine("  1. School Task");
+                        Console.WriteLine("  2. Home Task");
+                        Console.WriteLine("  3. Sport Task");
+                        Console.WriteLine("  4. Music Task");
+                        Console.WriteLine("  5. Church Task");
+                        Console.Write("Which type of Task would you like to create? ");
+                        type = Console.ReadLine();
+                        
+                        if (type == "1")
+                        {
+                            child.AddSchoolTask();
+                        }
+                        /*else if (type == "2")
+                        {
+                            child.AddHomeTask();
+                        }
+                        else if (type == "3")
+                        {
+                            child.AddSportTask();
+                        }
+                        else if (type == "4")
+                        {
+                            child.AddMusicTask();
+                        }
+                        else if (type == "4")
+                        {
+                            child.AddChurchTask();
+                        }*/
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Plese, try again.");
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
             }
             else if (endProgram == "5")
             {
