@@ -9,9 +9,9 @@ class Program
         Console.WriteLine();
 
         string endProgram = "continue";
-        Child child = new Child(); 
+        Child child = new Child();
         
-        while (endProgram != "9")
+        while (endProgram != "7")
         {
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Create New Task Manager");
@@ -20,9 +20,7 @@ class Program
             Console.WriteLine("  4. Add New Task");
             Console.WriteLine("  5. Display Tasks");
             Console.WriteLine("  6. Register Task Progress");
-            Console.WriteLine("  7. Edit Task");
-            Console.WriteLine("  8. Task Report");
-            Console.WriteLine("  9. Quit");
+            Console.WriteLine("  7. Quit");
             Console.Write("Select a choice from the menu: ");
             endProgram = Console.ReadLine();
             Console.Clear();
@@ -55,10 +53,51 @@ class Program
             else if (endProgram == "2")
             {
                 Console.WriteLine("Load Task Manager");
+                if (child.GetName() == "")
+                {
+                    child.LoadTasks();
+                }
+                else
+                {
+                    Console.Write("Save the progress first? (Y/N)");
+                    string confirm = "S";
+                    while (confirm != "Y" && confirm != "N")
+                    {
+                        confirm = Console.ReadLine().ToUpper();
+                        if (confirm == "Y")
+                        {
+                            child.SaveTasks();
+                            Console.WriteLine("File Saved.");
+                            Child childToOpen = new Child();
+                            childToOpen.LoadTasks();  
+                            child = childToOpen; 
+                        } else if (confirm == "N")
+                        {
+                            Child childToOpen = new Child();
+                            childToOpen.LoadTasks();  
+                            child = childToOpen;
+                        }
+                        else
+                        {
+                            Console.Write("Save the progress first? (Y/N)"); 
+                        }
+
+                    }
+                }                
+                Console.WriteLine("File Loaded");
             }
             else if (endProgram == "3")
             {
-                Console.WriteLine("Save Task Manager");
+                if (child.GetName() == "")
+                {
+                    Console.Clear();
+                    Console.WriteLine("You have to create a Task Manger first:");                    
+                }
+                else
+                {
+                    child.SaveTasks();
+                    Console.WriteLine("File Saved.");
+                }
             }
             else if (endProgram == "4")
             {
@@ -85,7 +124,7 @@ class Program
                         {
                             child.AddSchoolTask();
                         }
-                        /*else if (type == "2")
+                        else if (type == "2")
                         {
                             child.AddHomeTask();
                         }
@@ -97,10 +136,10 @@ class Program
                         {
                             child.AddMusicTask();
                         }
-                        else if (type == "4")
+                        else if (type == "5")
                         {
                             child.AddChurchTask();
-                        }*/
+                        }
                         else
                         {
                             Console.Clear();
@@ -113,19 +152,20 @@ class Program
             }
             else if (endProgram == "5")
             {
-                Console.WriteLine("Display Tasks");
+                if (child.GetName() == "")
+                {
+                    Console.Clear();
+                    Console.WriteLine("You have to create a Task Manger first:");                    
+                }
+                else
+                {
+                    child.DisplayTasks();
+                }
             }
             else if (endProgram == "6")
             {
                 Console.WriteLine("Register Task Progress");
-            }
-             else if (endProgram == "7")
-            {
-                Console.WriteLine("Edit Task");
-            }
-            else if (endProgram == "8")
-            {
-                Console.WriteLine("Task Report");
+                child.RecordList();
             }
         }
         Console.Clear();
